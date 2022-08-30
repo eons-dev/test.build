@@ -1,0 +1,38 @@
+{
+  "build_in" : "github",
+  "clear_build_path" : true,
+  "next": [
+    {
+      "build" : "publish",
+      "build_in" : "build_test",
+      "run_when" : [
+        "release"
+      ],
+      "copy" : [
+        {"../../inc/test.py" : "build_test/test.py"}
+      ],
+      "config" : {
+        "name" : "test",
+        "type" : "build",
+        "clear_build_path" : false,
+        "visibility" : "public"
+      }
+    },
+    {
+      "build" : "publish",
+      "build_in" : "build_test_case",
+      "run_when" : [
+        "release"
+      ],
+      "copy" : [
+        {"../../inc/test_case.py" : "build_test_case/test_case.py"}
+      ],
+      "config" : {
+        "name" : "test_case",
+        "type" : "build",
+        "clear_build_path" : false,
+        "visibility" : "public"
+      }
+    }
+  ]
+}
