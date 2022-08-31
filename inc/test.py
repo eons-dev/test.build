@@ -23,8 +23,8 @@ class test(Builder):
 
     # Required Builder method. See that class for details.
     def Build(this):
-        tempRepoStore = str(Path(this.test_path).joinpath('eons/'))
+        tempRepoStore = str(Path(this.test_path).joinpath('eons/').resolve())
         this.Copy(this.executor.repo['store'], tempRepoStore)
         os.chdir(this.test_path)
-        this.RunCommand(f"ebbs . -v -c {this.test_fixture} {' '.join(this.test_args)} --repo_store {tempRepoStore}")
+        this.RunCommand(f"ebbs -v -c {this.test_fixture} {' '.join(this.test_args)} --repo_store {tempRepoStore}")
         this.Delete(tempRepoStore)

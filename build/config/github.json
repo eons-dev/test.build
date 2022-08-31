@@ -1,0 +1,47 @@
+{
+  "next": [
+    {
+      "run_when_any" : [
+        "release"
+      ],
+      "build" : "publish",
+      "build_in" : "build_test",
+      "copy" : [
+        {"../../../inc/test.py" : "build_test/test.py"}
+      ],
+      "config" : {
+        "name" : "test",
+        "type" : "build",
+        "clear_build_path" : false,
+        "visibility" : "public"
+      }
+    },
+    {
+      "run_when_any" : [
+        "release"
+      ],
+      "build" : "publish",
+      "build_in" : "build_test_case",
+      "copy" : [
+        {"../../../inc/test_case.py" : "build_arbitrary/test_case.py"}
+      ],
+      "config" : {
+        "name" : "test_case",
+        "type" : "build",
+        "clear_build_path" : false,
+        "visibility" : "public"
+      }
+    },
+    {
+      "run_when_any" : [
+        "schedule"
+      ],
+      "build" : "proxy",
+      "build_in" : "./",
+      "config" : {
+        "clear_build_path" : false,
+        "proxy" : "../../config/schedule.json"
+      }
+    }
+  ]
+}
