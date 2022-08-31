@@ -23,7 +23,7 @@
       "build" : "publish",
       "build_in" : "build_test_case",
       "copy" : [
-        {"../../../inc/test_case.py" : "build_arbitrary/test_case.py"}
+        {"../../../inc/test_case.py" : "build_test_case/test_case.py"}
       ],
       "config" : {
         "name" : "test_case",
