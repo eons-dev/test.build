@@ -39,7 +39,9 @@ class test_case(Builder):
             if (assertion["kind"] == "command"):
                 if (assertion["check"] == "output"):
                     code, output = this.RunCommand(assertion["command"], True)
-                    this.Assert(output, assertion["comparator"], assertion["expected"])
+                    output = [line for line in output if len(line)]
+                    expected = [line for line in assertion["expected"] if len(line)]
+                    this.Assert(output, assertion["comparator"], expected)
 
                 elif (assertion["check"] == "return"):
                     code = this.RunCommand(assertion["command"], False)
