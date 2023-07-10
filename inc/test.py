@@ -26,5 +26,5 @@ class test(Builder):
         tempRepoStore = str(Path(this.test_path).joinpath('eons/').resolve())
         this.Copy(this.executor.repo['store'], tempRepoStore)
         os.chdir(this.test_path)
-        this.RunCommand(f"ebbs -vvv -c {this.test_fixture} {' '.join(this.test_args)} --repo_store {tempRepoStore}")
+        this.RunCommand(f"ebbs -vvv -c {this.test_fixture} {' '.join(this.test_args)} --repo_store {tempRepoStore} --repo_registry {tempRepoStore}")
         this.Delete(tempRepoStore)
