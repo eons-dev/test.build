@@ -24,7 +24,7 @@ class test(Builder):
     # Required Builder method. See that class for details.
     def Build(this):
         tempRepoStore = str(Path(this.test_path).joinpath('eons/').resolve())
-        this.Copy(this.executor.repo['store'], tempRepoStore)
+        this.Copy(this.executor.repo.registry, tempRepoStore)
         os.chdir(this.test_path)
         this.RunCommand(f"ebbs -vvv -c {this.test_fixture} {' '.join(this.test_args)} --repo_store {tempRepoStore} --repo_registry {tempRepoStore}")
         this.Delete(tempRepoStore)
