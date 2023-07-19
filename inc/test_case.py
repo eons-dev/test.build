@@ -12,6 +12,7 @@ class test_case(Builder):
         super().__init__(name)
 
         this.clearBuildPath = False
+        this.enableAutoReturn = False
         this.supportedProjectTypes = []
         
         this.requiredKWArgs.append("assertions")
